@@ -20,7 +20,7 @@
 #include <sound/soc.h>
 #include <sound/initval.h>
 #include <sound/tlv.h>
-
+#include <sound/soc.h>
 #include "adv7511.h"
 
 static const struct snd_kcontrol_new adv7511_controls[] = {
@@ -264,6 +264,8 @@ static int adv7511_resume(struct snd_soc_codec *codec)
 
 static int adv7511_probe(struct snd_soc_codec *codec)
 {
+    /* delete by star-star */
+#if 0
 	struct adv7511 *adv7511 = snd_soc_codec_get_drvdata(codec);
 	int ret;
 
@@ -275,6 +277,8 @@ static int adv7511_probe(struct snd_soc_codec *codec)
 	}
 
 	return adv7511_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
+ #endif
+    return 0;
 }
 
 static int adv7511_remove(struct snd_soc_codec *codec)
@@ -298,11 +302,21 @@ static struct snd_soc_codec_driver adv7511_codec_driver = {
 
 int adv7511_audio_init(struct device *dev)
 {
+    /* delete by star-star */
+
+    #if 0
     return snd_soc_register_codec(dev, &adv7511_codec_driver,
 		&adv7511_dai, 1);
+    #endif
 }
 
 void adv7511_audio_exit(struct device *dev)
 {
+    /* delete by star-star */
+
+#if 0
+
 	snd_soc_unregister_codec(dev);
+#endif
+
 }
